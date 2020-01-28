@@ -4,10 +4,83 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.title {
+  color: White;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.landingPage {
+  text-align: center;
+}
+
+.landingPage th{
+  padding-right: 20px;
+}
+
+.landingPage th {
+  align: center !important;
+}
+
+.login th{
+  color: white;
+  text-align: center;
+}
+
+.login td{
+  font-size: 15px;
+}
+
+.register th {
+  color: white;
+  text-align: center;
+}
+
+.register td{
+  font-size: 15px;
+}
+
+
+
+.btnF {
+  width:120px !important;
+  text-align: center
+}
+
+.App {
+  padding: 20px 5% 0% 5%;
+  min-height: 100vh;
+  font-size: calc(6px + 2vmin);
+  margin: auto;
+}
+
+.All{
+  background-color: #282c34;
+}
+
+@media screen and (min-width: 1018px) {
+  .App {
+    margin: auto;
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 792px) {
+  .App {
+    padding: 2% 1% 0% 1%;
+  }
+}
+
+@media screen and (max-width: 722px) {
+  .App {
+    padding: 2% 0% 0% 0%;
+  }
 }

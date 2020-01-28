@@ -1,7 +1,7 @@
 import React from 'react';
 
-import GameToolbar from "./gameToolbar/gameToolbar";
-import HeaderAccount from "./headerAccount/headerAccount";
+import GameToolbar from "./components/gameToolbar/gameToolbar";
+import HeaderAccount from "./components/headerAccount/headerAccount";
 
 function Header() {
     return (

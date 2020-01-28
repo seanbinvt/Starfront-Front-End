@@ -1,0 +1,19 @@
+.empireOverview {
+    text-align: center;
+    background-color: black;
+}
+
+.empireOverview th {
+    padding-right: 10px;
+    color: White;
+    font-size: 20px;
+    border-bottom: 4px inset darkgrey;
+}
+
+.empireOverview td {
+    color: silver;
+    font-size: 15px;
+    padding: 5px 10px 5px 0px;
+    border-bottom: 1px solid darkgrey;
+}
+

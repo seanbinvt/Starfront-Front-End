@@ -1,19 +1,25 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 
-//import "./gameToolbar.css";
+import "./empireTabs.css";
 
 const EmpireTabs = props => (
-    <table align="center" className="toolbar">
+    <table align="center" className="tabs">
         <tbody>
         <tr>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/map"} variant="primary" >Map</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/fleets"} variant="primary">Fleets</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/empire"} variant="primary" >Empire</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/commanders"} variant="primary">Commanders</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/guild"} variant="primary" >Guild</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/notes"} variant="primary">Notes</Button></th>
-            <th><Button type="button" className="btnt btn-primary btn-sm btn-block" href={"/bookmarks"} variant="primary" >Bookmarks</Button></th>
+            <th><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire"} variant="primary" >Overview</Button></th>
+            <th><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/production"} variant="primary">Production</Button></th>
+            <th><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/economy"} variant="primary" >Economy</Button></th>
+            <th><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/trade"} variant="primary">Trade</Button></th>
+            <th><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/reports"} variant="primary" >Reports</Button></th>
+        </tr>
+
+        <tr>
+            <td><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/capacities"} variant="primary" >Capacities</Button></td>
+            <td><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/structures"} variant="primary">Structures</Button></td>
+            <td><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/fleets"} variant="primary" >Fleets</Button></td>
+            <td><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/units"} variant="primary">Units</Button></td>
+            <td><Button type="button" className="btne btn-secondary btn-sm btn-block" href={"/empire/technologies"} variant="primary" >Technologies</Button></td>
         </tr>
         </tbody>
     </table>

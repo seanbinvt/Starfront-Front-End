@@ -1,0 +1,19 @@
+.fleetOverview th {
+    font-size: 13px;
+    padding-right: 6px;
+    padding-left: 6px;
+    color: white;
+}
+
+.fleetOverview td {
+    font-size: 15px;
+    padding-right: 2px;
+    padding-left: 2px;
+    border: solid darkgrey 1px;
+    color: silver;
+}
+
+.fleetOverview {
+    text-align: center;
+    background-color: black;
+}

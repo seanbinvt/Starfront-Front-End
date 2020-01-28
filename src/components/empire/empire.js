@@ -1,12 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './empire.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import EmpireTabs from "./empireTabs.js";
+import EmpireOverview from "./empireOverview/empireOverview.js";
+import FleetOverview from "./fleetOverview/fleetOverview";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+function Empire() {
+    return (
+        <div>
+            <EmpireTabs/>
+            <Router>
+                <Switch>
+                    <Route path="/empire" exact component={EmpireOverview} />
+                    <Route path="/empire/fleets" exact component={FleetOverview} />
+                </Switch>
+            </Router>
+        </div>
+    );
+}
+
+export default Empire;
