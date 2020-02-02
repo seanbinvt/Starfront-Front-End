@@ -3,11 +3,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import database from "../../database";
+import api from "../../api";
 import {Redirect} from "react-router";
 import {Toast} from "react-bootstrap";
+import Cookies from 'js-cookie';
 
-const logPath = "auth/login"
+const logPath = "auth/login";
 
 function showToast(text) {
     console.log(text);
@@ -20,9 +21,11 @@ function showToast(text) {
 }
 
 async function post() {
-    var username = document.getElementById(username);
-    var password = document.getElementById(password);
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
+    console.log(username);
+    console.log(password);
     if (!username) {
         showToast("Your username cannot be null, please try again.");
         return;
@@ -33,42 +36,39 @@ async function post() {
         try {
             // Make post request to register and direct to login after registration.
             const response = await axios.post(
-                database.baseUrl + logPath,
-                {username: {username}, password: {password}},
+                api.baseUrl + logPath,
+                {username, password},
                 {headers: {'Content-Type': 'application/json'}}
             );
-            return <Redirect to={'/empire'}/>
-            return;
-        } catch {
+            Cookies.set('jwt', response.data.access_token, {expires: Date.now() + 1});
+            console.log(Cookies.get('jwt'));
+        } catch (err) {
             // If error (user exists or other) then show message.
+            console.log(err);
             showToast("Your login credentials were invalid, please retry.")
-            return;
         }
     }
 }
 
 function Login() {
-    return (
-        <div className="All">
-            <div className="App">
-                <header className="App-header">
-                        <tbody className={"login"}>
-                            <tr>
-                                <th color={"White"}>Email:</th>
-                                <td><input type={"text"} id={"username"}/></td>
-                            </tr>
-                            <tr>
-                                <th>Password:</th>
-                                <td><input type={"password"} id={"password"}/></td>
-                            </tr>
-                            <tr><th></th>
-                                <th><Button type="button" className="btnF btn-primary btn-lg btn-block" onClick={post} variant="primary" >SUBMIT</Button></th></tr>
-
-                        </tbody>
-                </header>
-            </div>
-        </div>
+    if(Cookies.get('jwt')) {
+        return ( <Redirect to={"/empire"}/> )
+    } else {
+        return (
+                <tbody className={"login"}>
+                    <tr>
+                        <th color={"White"}>Username:</th>
+                        <td><input type={"text"} id={"username"}/></td>
+                    </tr>
+                    <tr>
+                        <th>Password:</th>
+                        <td><input type={"password"} id={"password"}/></td>
+                    </tr>
+                    <tr><th></th>
+                        <th><Button type="button" className="btnF btn-primary btn-lg btn-block" onClick={post} href="/empire" variant="primary">SUBMIT</Button></th></tr>
+                </tbody>
     );
+    }
 }
 
 export default Login;

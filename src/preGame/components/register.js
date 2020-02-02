@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import database from '../../database'
+import database from '../../api'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
@@ -22,9 +22,11 @@ function showToast(text) {
 }
 
 async function post() {
-    var username = document.getElementById(username);
-    var password = document.getElementById(password);
-    var confirmPass = document.getElementById(confirmPass);
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
+
+    console.log(username);
 
     if (!username) {
         showToast("Your username cannot be null, please try again.");
@@ -40,15 +42,15 @@ async function post() {
             // Make post request to register and direct to login after registration.
             const response = await axios.post(
                 database.baseUrl + regPath,
-                {username: {username}, password: {password}},
-                {headers: {'Content-Type': 'application/json'}}
+                {username, password},
+                {json: true}
             );
             return <Redirect to={'/login'}/>
             return;
-        } catch {
+        } catch (err) {
             // If error (user exists or other) then show message.
             showToast("There was an error with the registration. Your entered username may be taken by another player.")
-            return;
+            console.log(err);
         }
     }
 }
